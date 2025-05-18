@@ -1,4 +1,10 @@
 pandas
 numpy
 seaborn
+torch
+torchvision
+transformers
+datasets
+tokenizers
+accelerate
 -e .
