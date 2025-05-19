@@ -7,4 +7,5 @@ transformers
 datasets
 tokenizers
 accelerate
--e .
+os
+#-e .
