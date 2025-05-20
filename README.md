@@ -1,1 +1,2 @@
-## led model,data_transformation,chunking using faceboob summerizer by facbeook bartcnn,make question passage pairs,##batching
+##data_loader with randomisor
+##hyper_parameter tuners
