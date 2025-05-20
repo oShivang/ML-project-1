@@ -8,10 +8,14 @@ class data_loader_cum_summerizer:
         dataframe=self.questions_dataframe
         dataframe.dropna(subset=dataframe.columns[0:3])
         return dataframe
-    def tokenize(self,question:pd.DataFrame):
+    def tokenize_input(self,question:pd.DataFrame):
         pair=question.iloc[1].lower()+self.comprehension_dict[question[0].lower()]
         tokenizer=LEDTokenizer.from_pretrained("allenai/led-base-16384")
         return tokenizer(pair,return_tensors="pt",padding="max_length",truncation=True,max_length=16384)
+    def tokenize_output(self,question:pd.DataFrame):
+        tokenizer=LEDTokenizer.from_pretrained("allenai/led-base-16384")
+        return tokenizer(question.iloc[2].lower(),return_tensors="pt",padding="max_length",truncation=True,max_length=16384)
+
 
         
     
