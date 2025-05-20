@@ -13,9 +13,8 @@ class data_processor:
                 file_path=os.path.join(self.comprehensions_path,filename)
                 with open(file_path,encoding='latin1') as f:
                     key=f.readline().strip().lower()
-                    comprehension=[]
-                    comprehension.append([line.strip().lower() for line in f.readlines() if line != "\n"])
-                    data_comprehension[key]=comprehension
+                    comprehension=[line.strip().lower() for line in f.readlines() if line != "\n"]
+                    data_comprehension[key]=" ".join(comprehension)
         return data_comprehension
     def topic_list(self):
         data_topics=[]
