@@ -1,11 +1,7 @@
 pandas
 numpy
-seaborn
-torch
-torchvision
 transformers
-datasets
 tokenizers
-accelerate
-os
+sentence_transformers
+nltk
 #-e .
