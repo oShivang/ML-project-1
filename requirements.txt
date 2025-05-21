@@ -4,4 +4,6 @@ transformers
 tokenizers
 sentence_transformers
 nltk
+sentencepiece
+
 #-e .

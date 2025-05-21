@@ -1,0 +1,2 @@
+from trainer import model_trainer
+model_trainer('/Users/shivangkarthikey/Desktop/project1/data/comprehensions','/Users/shivangkarthikey/Desktop/project1/data/questions','/Users/shivangkarthikey/Desktop/project1/data/topics')
