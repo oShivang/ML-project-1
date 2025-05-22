@@ -9,6 +9,9 @@ from transformers import T5Config
 import torch
 class model_trainer:
     def __init__(self,comprehension_address:str,question_address:str,topic_address:str):
+        config = T5Config.from_pretrained("t5-large")
+        config.dropout_rate = 0.3  # increase from default (0.1) if needed
+        model = T5ForConditionalGeneration(config).to(device)
         device= ('cuda' if torch.cuda.is_available() else'cpu')
         optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
         data=data_processor(question_address,comprehension_address,topic_address)
@@ -26,10 +29,6 @@ class model_trainer:
         num_warmup_steps=num_warmup_steps,
         num_training_steps=num_training_steps
         )
-        config = T5Config.from_pretrained("t5-large")
-        config.dropout_rate = 0.3  # increase from default (0.1) if needed
-        model = T5ForConditionalGeneration(config).to(device)
-
         for epoches in range(3):
             while(dataloader.train_stoper):
                 random_que=dataloader.load_data(batch_size=1)
