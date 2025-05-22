@@ -9,10 +9,10 @@ from transformers import T5Config
 import torch
 class model_trainer:
     def __init__(self,comprehension_address:str,question_address:str,topic_address:str):
+        device= ('cuda' if torch.cuda.is_available() else'cpu')
         config = T5Config.from_pretrained("t5-large")
         config.dropout_rate = 0.3  # increase from default (0.1) if needed
         model = T5ForConditionalGeneration(config).to(device)
-        device= ('cuda' if torch.cuda.is_available() else'cpu')
         optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
         data=data_processor(question_address,comprehension_address,topic_address)
         train_questions=data.questions_list()
