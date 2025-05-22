@@ -1,2 +1,2 @@
 from trainer import model_trainer
-model_trainer('src/data/comprehensions','src/data/questions','src/data/topics')
+model_trainer('../data/comprehensions','../data/questions','../data/topics')
