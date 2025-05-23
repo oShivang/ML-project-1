@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import os
 class data_processor:
     def __init__(self,ques_path:str,comprehensions_path:str,topics_path:str):
@@ -30,10 +29,10 @@ class data_processor:
             if filename.endswith('.txt'):
                 file_path=os.path.join(self.ques_path,filename)
                 try:
-                    df=pd.read_csv(filepath_or_buffer=os.path.join(self.ques_path,filename),sep='\t')
+                    df=pd.read_csv(filepath_or_buffer=file_path,sep='\t')
                     list_questions.append(df)
                 except UnicodeDecodeError:
-                    df=pd.read_csv(filepath_or_buffer=os.path.join(self.ques_path,filename),sep='\t',encoding='latin1')
+                    df=pd.read_csv(filepath_or_buffer=file_path,sep='\t',encoding='latin1')
                     list_questions.append(df)
         data_frame=pd.concat(list_questions,ignore_index=True)
         return data_frame

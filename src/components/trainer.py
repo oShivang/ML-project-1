@@ -1,7 +1,7 @@
 from transformers import T5ForConditionalGeneration
-from data_injestion import data_processor
-from data_transformation import data_transform
-from utils import data_loader
+from src.components.data_injestion import data_processor
+from src.components.data_transformation import data_transform
+from src.components.utils import data_loader
 from transformers import get_linear_schedule_with_warmup
 from transformers import T5Config
 
@@ -10,7 +10,7 @@ import torch
 class model_trainer:
     def __init__(self,comprehension_address:str,question_address:str,topic_address:str):
         device= ('cuda' if torch.cuda.is_available() else'cpu')
-        config = T5Config.from_pretrained("t5-large")
+        config = T5Config.from_pretrained("t5-small")
         config.dropout_rate = 0.3  # increase from default (0.1) if needed
         model = T5ForConditionalGeneration(config).to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
@@ -41,9 +41,8 @@ class model_trainer:
                 loss.backward()
                 optimizer.step()
                 scheduler.step()
-                optimizer.zero_grad()
-
-                print(total_loss)
+                optimizer.zero_grad()   
+                print("loss:%",loss.item())
                 print (count)
                 count+=1
         torch.save({"model_state": model.state_dict()},)
