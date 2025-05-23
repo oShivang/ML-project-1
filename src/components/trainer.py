@@ -1,7 +1,7 @@
 from transformers import T5ForConditionalGeneration
-from src.components.data_injestion import data_processor
-from src.components.data_transformation import data_transform
-from src.components.utils import data_loader
+from data_injestion import data_processor
+from data_transformation import data_transform
+from utils import data_loader
 from transformers import get_linear_schedule_with_warmup
 from transformers import T5Config
 
