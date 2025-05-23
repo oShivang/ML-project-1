@@ -1,12 +1,8 @@
 from sentence_transformers import SentenceTransformer, util
-import nltk
 from nltk.tokenize import sent_tokenize
 import torch
-nltk.download('punkt')
-
 def chunk_creater(query: str, comprehension: str, top_k: int, token_per_chunk: int):
     model = SentenceTransformer('all-mpnet-base-v2')
-
     # Step 1: Chunk comprehension text
     chunks = []
     current_chunk = ""
