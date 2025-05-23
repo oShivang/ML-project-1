@@ -1,6 +1,6 @@
 import pandas as pd
 from transformers import T5Tokenizer
-from src.components.chunker import chunk_creater
+from components.chunker import chunk_creater
 class data_transform:
     def __init__(self,questions_dataframe:pd.DataFrame,comprehension_dict:dict):
         self.questions_dataframe=questions_dataframe

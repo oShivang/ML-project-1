@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer, util
 import nltk
 from nltk.tokenize import sent_tokenize
 import torch
-from src.components.data_injestion import data_processor
+from components.data_injestion import data_processor
 nltk.download('punkt_tab')
 
 def chunk_creater(query: str, comprehension: str, top_k: int, token_per_chunk: int):
