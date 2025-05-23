@@ -8,7 +8,7 @@ def chunk_creater(query: str, comprehension: str, top_k: int, token_per_chunk: i
     current_chunk = ""
     current_len = 0
 
-    sentences = sent_tokenize(comprehension)
+    sentences = sent_tokenize(comprehension,language="english")
 
     for sentence in sentences:
         sentence_len = len(sentence.split())
